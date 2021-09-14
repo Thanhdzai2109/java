@@ -1,0 +1,60 @@
+import java.util.*;
+public class J02103 {
+    public static void main(String[] args) {
+        Scanner sc=new Scanner(System.in);
+        int t=sc.nextInt();
+        for (int u=1;u<=t;u++){
+            int n=sc.nextInt();
+            int m=sc.nextInt();
+            int a[][]=new int [1000][1000];
+            for (int i=0;i<n;i++){
+                for (int j=0;j<m;j++){
+                    a[i][j]=sc.nextInt();
+                }
+            }
+            int[][] transpose = new int[1000][1000];
+            for(int i = 0; i < n; i++) {
+               for (int j = 0; j < m; j++) {
+                    transpose[j][i] = a[i][j];
+                }
+            }
+            System.out.println("Test "+u+":");
+            tich(a, transpose, n, m);
+        }
+    }
+    
+  public static void tich(int a[][],int b[][],int m,int n) {
+ 
+   int c[][] = new int[1000][1000];
+ 
+   for(int i = 0;i<m;i++) {
+ 
+    for(int j = 0;j<n;j++) {
+ 
+     c[i][j] = 0;
+ 
+     for(int k = 0;k<n;k++) {
+ 
+      c[i][j] = c[i][j] + a[i][k]*b[k][j];
+ 
+     }
+ 
+    }  
+ 
+   }
+ 
+   for(int i = 0;i<m;i++) {
+ 
+    for(int j = 0;j<n;j++) {
+ 
+     System.out.print(c[i][j]+" ");
+
+ 
+    }
+ 
+    System.out.println();
+ 
+   }
+ 
+  }
+}
